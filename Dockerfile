@@ -1,12 +1,6 @@
 # 2026年直接用官方镜像，无需换阿里云私有源
 FROM node:lts-alpine3.23
 
-# 2026年npm源最新配置（npmmirror.com仍可用，且适配node20+）
-RUN npm config set registry https://registry.npmmirror.com \
-    # 新增：适配Alpine 3.23的最新国内源（2026年镜像地址未变，但需确认版本）
-    && echo "https://mirror.aliyun.com/alpine/v3.23/main/" > /etc/apk/repositories \
-    && echo "https://mirror.aliyun.com/alpine/v3.23/community/" >> /etc/apk/repositories
-
 
 # 原有代码保留...
 # Arguments
