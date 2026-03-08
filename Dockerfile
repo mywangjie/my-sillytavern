@@ -1,5 +1,12 @@
-FROM  registry.cn-hangzhou.aliyuncs.com/library/node:lts-alpine3.23
+# 使用原始基础镜像
+FROM node:lts-alpine3.23
 
+# 配置国内npm源和镜像加速，解决网络问题
+RUN npm config set registry https://registry.npmmirror.com && \
+    echo "https://mirror.aliyun.com/alpine/v3.23/main/" > /etc/apk/repositories && \
+    echo "https://mirror.aliyun.com/alpine/v3.23/community/" >> /etc/apk/repositories
+
+# 原有代码保留...
 # Arguments
 ARG APP_HOME=/home/node/app
 
