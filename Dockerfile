@@ -1,7 +1,7 @@
-# 使用原始基础镜像
-FROM node:lts-alpine3.23
+# 使用阿里云开放的node镜像源（无需授权）
+FROM registry.aliyuncs.com/aliyuncs/node:lts-alpine3.23
 
-# 配置国内npm源和镜像加速，解决网络问题
+# 配置国内npm和apk源，加速依赖安装
 RUN npm config set registry https://registry.npmmirror.com && \
     echo "https://mirror.aliyun.com/alpine/v3.23/main/" > /etc/apk/repositories && \
     echo "https://mirror.aliyun.com/alpine/v3.23/community/" >> /etc/apk/repositories
